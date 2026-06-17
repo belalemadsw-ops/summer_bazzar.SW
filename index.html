@@ -6,6 +6,9 @@
 <title>Samir William — The Bazaar</title>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
+  .visitor-counter{display:flex;flex-direction:column;align-items:flex-end;color:#fff;}
+.visitor-number{font-size:28px;font-weight:700;color:#fff;line-height:1;}
+.visitor-text{font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#fff;}
 *{margin:0;padding:0;box-sizing:border-box;}
 html,body{width:100%;min-height:100vh;}
 body{background:#f8f7f5;font-family:'Montserrat',sans-serif;color:#1a1a1a;}
@@ -99,6 +102,10 @@ body{background:#f8f7f5;font-family:'Montserrat',sans-serif;color:#1a1a1a;}
     <div class="hero-top-bar">
 <img class="sw-logo-corner" src="images/web site logo.svg">    <div class="hero-badge">Exclusive Event</div>
     <div style="width:160px;"></div>
+    <div class="visitor-counter">
+    <span class="visitor-number" id="visitor-count">0</span>
+    <span class="visitor-text">VISITORS</span>
+</div>
   </div>
 </div>
 
@@ -235,6 +242,13 @@ function tick(){
 }
 tick();
 setInterval(tick,1000);
+</script>
+<script>
+fetch('https://api.countapi.xyz/hit/summer_bazzar_sw/visits')
+.then(response => response.json())
+.then(data => {
+document.getElementById('visitor-count').innerText=data.value;
+});
 </script>
 </body>
 </html>
